@@ -2,8 +2,11 @@
 	<h3>Listado de vuelos</h3>
 	<ul *ngIf="vuelos">
 		<li *ngFor="let vuelo of vuelos">
-			{{vuelo.id}} - {{vuelo.aerolinea}} - {{vuelo.origen}} - {{vuelo.destino}} - {{vuelo.fecha}} - {{vuelo.valor}}
+			{{vuelo.id}} - {{vuelo.aerolinea}} - {{vuelo.origen}} - {{vuelo.destino}} - {{vuelo.fecha}} - {{vuelo.valor}} - <button (click)="reservarVuelo(vuelo)"> Reservar</button>
 		</li>
 	</ul>
 	<span *ngIf="!vuelos">Cargando listado...</span>
 </div>
+
+<hr>
+<reservas [vueloSeleccionado]="vuelo"></reservas>

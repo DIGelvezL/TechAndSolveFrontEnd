@@ -1,0 +1,8 @@
+<div>
+	<form #formReservarVuelo="ngForm" (ngSubmit)="onSubmit(); formReservarVuelo.reset()">
+		<p>
+			<label>Nombre:</label>
+		</p>
+		{{vueloSeleccionado.id}} - {{vueloSeleccionado.aerolinea}} - {{vueloSeleccionado.origen}} - {{vueloSeleccionado.destino}} - {{vueloSeleccionado.fecha}} - {{vueloSeleccionado.valor}}
+	</form>
+</div>
