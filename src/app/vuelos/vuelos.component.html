@@ -1,0 +1,9 @@
+<div class="listado">
+	<h3>Listado de vuelos</h3>
+	<ul *ngIf="vuelos">
+		<li *ngFor="let vuelo of vuelos">
+			{{vuelo.id}} - {{vuelo.aerolinea}} - {{vuelo.origen}} - {{vuelo.destino}} - {{vuelo.fecha}} - {{vuelo.valor}}
+		</li>
+	</ul>
+	<span *ngIf="!vuelos">Cargando listado...</span>
+</div>
