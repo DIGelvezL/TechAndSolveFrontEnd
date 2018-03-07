@@ -1,4 +1,4 @@
-<div class="listado">
+<div class="listado" *ngIf="!esReserva">
 	<h3>Listado de vuelos</h3>
 	<ul *ngIf="vuelos">
 		<li *ngFor="let vuelo of vuelos">
@@ -8,5 +8,6 @@
 	<span *ngIf="!vuelos">Cargando listado...</span>
 </div>
 
-<hr>
-<reservas [vueloSeleccionado]="vuelo"></reservas>
+<div *ngIf="esReserva">
+	<reservas [vueloSeleccionado]="vuelo"></reservas>
+</div>

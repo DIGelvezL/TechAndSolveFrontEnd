@@ -5,16 +5,10 @@ import { Component } from '@angular/core';
 	templateUrl: './home.component.html'
 })
 export class HomeComponent{
-	public titulo = "Página principal";
-	public listado_ropa:Array<string>;
-	public prenda_a_guardar:string;
-
-	public fecha;
-	public nombre = "DANIEL gelvez LEON"
+	public titulo = "Bienvenidos a reservas de vuelos FlySolve";
 
 	constructor(
 	){
-		this.fecha = new Date(2018, 2, 1);
 	}
 
 }

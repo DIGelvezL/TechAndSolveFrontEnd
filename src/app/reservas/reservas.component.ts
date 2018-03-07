@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 import { ReservaDto } from './reservaDto';
 import { UsuarioDto } from './usuarioDto';
 import { VuelosDto } from '../vuelos/vuelosDto';
@@ -15,24 +17,43 @@ export class ReservasComponent {
 	@Input('vueloSeleccionado') vueloSeleccionado:VuelosDto;
 
 	constructor(
-		private _reservasService: ReservasService
+		private _reservasService: ReservasService,
+		private route: ActivatedRoute,
+        private router: Router
 	){
-		this.usuario = new UsuarioDto(null, "Gelvez Leon", "1989-04-18", "Daniel Ivan", 12345);
-		// this.vuelo = new VuelosDto(1, "avianca", "medellin", "bogota", "2018-03-17", 150000);
-
-		this.reservas = new ReservaDto(null, new Date(), this.usuario, this.vueloSeleccionado);
-
-		console.log(this.vueloSeleccionado);
+		this.usuario = new UsuarioDto();
 	}
 
 	reservarVuelo(){
-		this._reservasService.reservarVuelo(this.reservas).subscribe(
+		if(this.validarMayorEdad()){
+        	this.reservas = new ReservaDto(null, new Date(), this.usuario, this.vueloSeleccionado);
+
+			this.guardarReserva(this.reservas);
+        }else{
+        	alert("Solo los mayores de edad pueden hacer reservas de vuelo!!");
+        }
+	}
+
+	validarMayorEdad(){
+		let fechanacimiento = moment(this.usuario.fechaNacimiento, "YYYY-MM-DD");
+          
+        if(!fechanacimiento.isValid())
+            return false;
+      
+        let years = moment().diff(fechanacimiento, 'years');
+      
+        return years > 18
+	}
+
+	guardarReserva(reserva){
+		this._reservasService.reservarVuelo(reserva).subscribe(
 			result => {
 				// this.vuelos = result;
 				console.log(result);
 
 				if(result.respuestaDto && result.respuestaDto.codigo == 0){
-					alert("Se guardo la reserva correctamente.")                   
+					this.router.navigate(['']); 
+					alert("Se guardo la reserva correctamente.");     
                 }else{
                 	console.log("Error en el servidor");
                 }

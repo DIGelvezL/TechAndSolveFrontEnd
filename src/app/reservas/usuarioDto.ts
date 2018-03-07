@@ -1,10 +1,18 @@
 export class UsuarioDto{
 
-	constructor(
-		public id,
-		public apellido,
-		public fechaNacimiento,
-		public nombre,
-		public telefono
-	){}
+	public id;
+	public nombre:string;
+	public apellido:string;
+	public fechaNacimiento:string;
+	public telefono:string;
+	public cedula:string;
+
+	constructor(){
+		this.id = null;
+		this.nombre = null;
+		this.apellido = null;
+		this.fechaNacimiento = null;
+		this.telefono = null;
+		this.cedula = null;
+	}
 }

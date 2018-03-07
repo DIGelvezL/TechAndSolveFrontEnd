@@ -1,8 +1,49 @@
 <div>
-	<form #formReservarVuelo="ngForm" (ngSubmit)="onSubmit(); formReservarVuelo.reset()">
+	<h3>Reservar el vuelo # {{vueloSeleccionado.id}}</h3>
+
+	<form #formReservarVuelo="ngForm" (ngSubmit)="reservarVuelo()">
+		{{vueloSeleccionado.id}} - {{vueloSeleccionado.aerolinea}} - {{vueloSeleccionado.origen}} - {{vueloSeleccionado.destino}} - {{vueloSeleccionado.fecha}} - {{vueloSeleccionado.valor}}
+
+		<p>
+			<label>Cedula:</label>
+			<input type="text" name="cedula" #cedula="ngModel" [(ngModel)]="usuario.cedula" required pattern="[0-9]+">
+			<span *ngIf="cedula.touched && !cedula.valid">
+				La cedula es incorrecto!!
+			</span>
+		</p>
+
 		<p>
 			<label>Nombre:</label>
+			<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="usuario.nombre" required>
+			<span *ngIf="nombre.touched && !nombre.valid">
+				El nombre es incorrecto!!
+			</span>
 		</p>
-		{{vueloSeleccionado.id}} - {{vueloSeleccionado.aerolinea}} - {{vueloSeleccionado.origen}} - {{vueloSeleccionado.destino}} - {{vueloSeleccionado.fecha}} - {{vueloSeleccionado.valor}}
+
+		<p>
+			<label>Apellido:</label>
+			<input type="text" name="apellido" #apellido="ngModel" [(ngModel)]="usuario.apellido" required>
+			<span *ngIf="apellido.touched && !apellido.valid">
+				El apellido es incorrecto!!
+			</span>
+		</p>
+
+		<p>
+			<label>Fecha de nacimiento:</label>
+			<input type="text" name="fechaNacimiento" #fechaNacimiento="ngModel" [(ngModel)]="usuario.fechaNacimiento" required pattern="[0-9-]+">
+			<span *ngIf="fechaNacimiento.touched && !fechaNacimiento.valid">
+				La fecha de nacimiento es incorrecto!!
+			</span>
+		</p>
+
+		<p>
+			<label>Telefono:</label>
+			<input type="text" name="telefono" #telefono="ngModel" [(ngModel)]="usuario.telefono" required pattern="[0-9]+">
+			<span *ngIf="telefono.touched && !telefono.valid">
+				El telefono es incorrecto!!
+			</span>
+		</p>
+
+		<input type="submit" value="Reservar" [disabled]="!formReservarVuelo.form.valid">
 	</form>
 </div>

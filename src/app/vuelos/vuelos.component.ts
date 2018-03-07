@@ -10,10 +10,13 @@ import { VuelosService } from './vuelos.service';
 export class VuelosComponent {
 	public vuelos:Array<VuelosDto>;
 	public vuelo:VuelosDto = new VuelosDto();
+	public esReserva:boolean;
 
 	constructor(
 		private _vuelosService: VuelosService
-	){}
+	){
+		this.esReserva = false;
+	}
 
 	ngOnInit(){
 		this._vuelosService.getVuelos().subscribe(
@@ -40,5 +43,7 @@ export class VuelosComponent {
 		this.vuelo.destino = vuelo.destino; 
 		this.vuelo.fecha = vuelo.fecha; 
 		this.vuelo.valor = vuelo.valor;
+
+		this.esReserva = true;
 	}
 }

@@ -9,7 +9,6 @@ import { ReservasComponent } from './reservas/reservas.component';
 const appRoutes: Routes = [
 	{path: '', component: HomeComponent},
 	{path: 'vuelos', component: VuelosComponent},
-	{path: 'reservas', component: ReservasComponent},
 	{path: '**', component: HomeComponent}
 ];
 
