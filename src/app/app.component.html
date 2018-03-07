@@ -1,13 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Tech and Solve
+    
   </h1>
   <hr>
     <nav>
-        <a [routerLink]="['/home']" [routerLinkActive]="['activado']"> Home</a> -
-        <a [routerLink]="['/vuelos']" [routerLinkActive]="['activado']"> Vuelos</a> -
-        <a [routerLink]="['/consultar-reservas']" [routerLinkActive]="['activado']"> Consultar Reservas</a>
+        <a class="btn btn-info" [routerLink]="['/home']" > Home</a>
+        <a class="btn btn-info" [routerLink]="['/vuelos']" > Vuelos</a>
+        <a class="btn btn-info" [routerLink]="['/consultar-reservas']" > Consultar Reservas</a>
     </nav>
   <hr>
   <router-outlet></router-outlet>

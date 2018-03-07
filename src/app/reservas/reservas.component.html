@@ -62,6 +62,8 @@
 			</span>
 		</p>
 
-		<input type="submit" value="Reservar" [disabled]="!formReservarVuelo.form.valid">
+		<button (click)="volver()" class="btn btn-danger"> Volver</button>
+		<input type="submit" value="Reservar" class="btn btn-success" [disabled]="!formReservarVuelo.form.valid">
+
 	</form>
 </div>
