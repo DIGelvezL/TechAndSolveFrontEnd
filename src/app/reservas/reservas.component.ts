@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
-import { ReservaDto } from './reservaDto';
-import { UsuarioDto } from './usuarioDto';
-import { VuelosDto } from '../vuelos/vuelosDto';
+import { ReservaDto } from '../dtos/reservaDto';
+import { UsuarioDto } from '../dtos/usuarioDto';
+import { VuelosDto } from '../dtos/vuelosDto';
 import { ReservasService } from './reservas.service';
 
 @Component({

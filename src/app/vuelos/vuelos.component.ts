@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { VuelosDto } from './vuelosDto';
+import { VuelosDto } from '../dtos/vuelosDto';
 import { VuelosService } from './vuelos.service';
 
 @Component({
@@ -23,9 +23,7 @@ export class VuelosComponent {
 			result => {
 				this.vuelos = result;
 
-				if(this.vuelos){
-					console.log(this.vuelos);                   
-                }else{
+				if(!this.vuelos){
                 	console.log("Error en el servidor");
                 }
 			},

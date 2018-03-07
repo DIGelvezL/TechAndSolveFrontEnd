@@ -5,10 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { VuelosComponent } from './vuelos/vuelos.component';
 import { ReservasComponent } from './reservas/reservas.component';
+import { ConsultarReservasComponent } from './reservas/consultar-reservas/consultar-reservas.component';
 
 const appRoutes: Routes = [
 	{path: '', component: HomeComponent},
 	{path: 'vuelos', component: VuelosComponent},
+	{path: 'consultar-reservas', component: ConsultarReservasComponent},
 	{path: '**', component: HomeComponent}
 ];
 

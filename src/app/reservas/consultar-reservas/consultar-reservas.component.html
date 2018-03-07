@@ -1,0 +1,53 @@
+<div>
+	<h3>Consultar reservas por número de cedula</h3>
+
+	<form #formConsultarReservaById="ngForm" (ngSubmit)="consultarReservaByCedula()">
+
+		<p>
+			<label>Cedula:</label>
+			<input type="text" name="cedulaName" #cedulaName="ngModel" [(ngModel)]="cedula" required pattern="[0-9]+">
+			<span *ngIf="cedulaName.touched && !cedulaName.valid">
+				La cedula es incorrecto!!
+			</span>
+		</p>
+
+		<input type="submit" value="Consultar" [disabled]="!formConsultarReservaById.form.valid">
+	</form>
+</div>
+
+<div class="listado" *ngIf="mostrarReservas">
+	<h3>Listado de vuelos</h3>
+
+	<table style="width:100%" *ngIf="reservas">
+	  <tr>
+	    <th>NumeroReserva</th>
+	    <th>FechaReserva</th> 
+	    <th>NumeroVuelo</th>
+	    <th>Aerolinea</th>
+	    <th>Origen</th>
+	    <th>Destino</th>
+	    <th>FechaVuelo</th>
+	    <th>Valor</th>
+	    <th>Cedula</th>
+	    <th>Nombre</th>
+	    <th>Apellido</th>
+	    <th>Telefono</th>
+	  </tr>
+	  <tr *ngFor="let reserva of reservas">
+	    <td>{{reserva.id}}</td>
+	    <td>{{reserva.fechaReserva}}</td> 
+	    <td>{{reserva.vuelo.id}}</td>
+	    <td>{{reserva.vuelo.aerolinea}}</td>
+	    <td>{{reserva.vuelo.origen}}</td>
+	    <td>{{reserva.vuelo.destino}}</td>
+	    <td>{{reserva.vuelo.fecha}}</td>
+	    <td>{{reserva.vuelo.valor}}</td>
+	    <td>{{reserva.usuario.cedula}}</td>
+	    <td>{{reserva.usuario.nombre}}</td>
+	    <td>{{reserva.usuario.apellido}}</td>
+	    <td>{{reserva.usuario.telefono}}</td>
+	  </tr>
+	</table>
+
+	<span *ngIf="!reservas">Cargando listado...</span>
+</div>

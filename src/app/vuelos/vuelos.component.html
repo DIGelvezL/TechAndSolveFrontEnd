@@ -1,10 +1,27 @@
 <div class="listado" *ngIf="!esReserva">
 	<h3>Listado de vuelos</h3>
-	<ul *ngIf="vuelos">
-		<li *ngFor="let vuelo of vuelos">
-			{{vuelo.id}} - {{vuelo.aerolinea}} - {{vuelo.origen}} - {{vuelo.destino}} - {{vuelo.fecha}} - {{vuelo.valor}} - <button (click)="reservarVuelo(vuelo)"> Reservar</button>
-		</li>
-	</ul>
+
+	<table style="width:100%" *ngIf="vuelos">
+	  <tr>
+	    <th>NumeroVuelo</th>
+	    <th>Aerolinea</th> 
+	    <th>Origen</th>
+	    <th>Destino</th>
+	    <th>FechaVuelo</th>
+	    <th>Valor</th>
+	    <th></th>
+	  </tr>
+	  <tr *ngFor="let vuelo of vuelos">
+	    <td>{{vuelo.id}}</td>
+	    <td>{{vuelo.aerolinea}}</td> 
+	    <td>{{vuelo.origen}}</td>
+	    <td>{{vuelo.destino}}</td>
+	    <td>{{vuelo.fecha}}</td>
+	    <td>{{vuelo.valor}}</td>
+	    <td><button (click)="reservarVuelo(vuelo)"> Reservar</button></td>
+	  </tr>
+	</table>
+	
 	<span *ngIf="!vuelos">Cargando listado...</span>
 </div>
 

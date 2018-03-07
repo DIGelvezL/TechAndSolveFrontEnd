@@ -3,16 +3,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 
-import { ReservaDto } from './reservaDto';
+import { ReservaDto } from '../dtos/reservaDto';
 
-const CONSULTAR_VUELOS = "http://localhost:8080/TechAndSolve/api/reserva/reservarVuelo";
+const RESERVAR_VUELO = "http://localhost:8080/TechAndSolve/api/reserva/reservarVuelo";
 
 @Injectable()
 export class ReservasService{
 	public url:string;
 
 	constructor(private _http: HttpClient){
-		this.url = CONSULTAR_VUELOS;
+		this.url = RESERVAR_VUELO;
 	}
 
 	reservarVuelo(reserva: ReservaDto):Observable<any>{

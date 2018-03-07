@@ -2,7 +2,25 @@
 	<h3>Reservar el vuelo # {{vueloSeleccionado.id}}</h3>
 
 	<form #formReservarVuelo="ngForm" (ngSubmit)="reservarVuelo()">
-		{{vueloSeleccionado.id}} - {{vueloSeleccionado.aerolinea}} - {{vueloSeleccionado.origen}} - {{vueloSeleccionado.destino}} - {{vueloSeleccionado.fecha}} - {{vueloSeleccionado.valor}}
+
+		<table style="width:100%">
+		  <tr>
+		    <th>NumeroVuelo</th>
+		    <th>Aerolinea</th> 
+		    <th>Origen</th>
+		    <th>Destino</th>
+		    <th>FechaVuelo</th>
+		    <th>Valor</th>
+		  </tr>
+		  <tr>
+		    <td>{{vueloSeleccionado.id}}</td>
+		    <td>{{vueloSeleccionado.aerolinea}}</td> 
+		    <td>{{vueloSeleccionado.origen}}</td>
+		    <td>{{vueloSeleccionado.destino}}</td>
+		    <td>{{vueloSeleccionado.fecha}}</td>
+		    <td>{{vueloSeleccionado.valor}}</td>
+		  </tr>
+		</table>
 
 		<p>
 			<label>Cedula:</label>

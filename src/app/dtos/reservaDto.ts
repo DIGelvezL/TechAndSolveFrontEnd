@@ -1,5 +1,5 @@
 import { UsuarioDto } from './usuarioDto';
-import { VuelosDto } from '../vuelos/vuelosDto';
+import { VuelosDto } from './vuelosDto';
 
 export class ReservaDto{
 
