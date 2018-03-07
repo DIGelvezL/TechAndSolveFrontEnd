@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { ReservaDto } from './reservaDto';
 
-const CONSULTAR_VUELOS = "http://localhost:8080/TechAndSolve/api/reservar/reservarVuelo";
+const CONSULTAR_VUELOS = "http://localhost:8080/TechAndSolve/api/reserva/reservarVuelo";
 
 @Injectable()
 export class ReservasService{
