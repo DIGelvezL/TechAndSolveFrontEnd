@@ -44,4 +44,9 @@ export class VuelosComponent {
 
 		this.esReserva = true;
 	}
+
+	cancelar(){
+		this.vuelo = new VuelosDto();
+		this.esReserva = false;
+	}
 }

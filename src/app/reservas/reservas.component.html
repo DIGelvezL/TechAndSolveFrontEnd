@@ -1,69 +1,44 @@
-<div>
-	<h3>Reservar el vuelo # {{vueloSeleccionado.id}}</h3>
 
-	<form #formReservarVuelo="ngForm" (ngSubmit)="reservarVuelo()">
 
-		<table style="width:100%">
-		  <tr>
-		    <th>NumeroVuelo</th>
-		    <th>Aerolinea</th> 
-		    <th>Origen</th>
-		    <th>Destino</th>
-		    <th>FechaVuelo</th>
-		    <th>Valor</th>
-		  </tr>
-		  <tr>
-		    <td>{{vueloSeleccionado.id}}</td>
-		    <td>{{vueloSeleccionado.aerolinea}}</td> 
-		    <td>{{vueloSeleccionado.origen}}</td>
-		    <td>{{vueloSeleccionado.destino}}</td>
-		    <td>{{vueloSeleccionado.fecha}}</td>
-		    <td>{{vueloSeleccionado.valor}}</td>
-		  </tr>
-		</table>
-
-		<p>
-			<label>Cedula:</label>
-			<input type="text" name="cedula" #cedula="ngModel" [(ngModel)]="usuario.cedula" required pattern="[0-9]+">
-			<span *ngIf="cedula.touched && !cedula.valid">
-				La cedula es incorrecto!!
-			</span>
-		</p>
-
-		<p>
-			<label>Nombre:</label>
-			<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="usuario.nombre" required>
-			<span *ngIf="nombre.touched && !nombre.valid">
-				El nombre es incorrecto!!
-			</span>
-		</p>
-
-		<p>
-			<label>Apellido:</label>
-			<input type="text" name="apellido" #apellido="ngModel" [(ngModel)]="usuario.apellido" required>
-			<span *ngIf="apellido.touched && !apellido.valid">
-				El apellido es incorrecto!!
-			</span>
-		</p>
-
-		<p>
-			<label>Fecha de nacimiento:</label>
-			<input type="text" name="fechaNacimiento" #fechaNacimiento="ngModel" [(ngModel)]="usuario.fechaNacimiento" required pattern="[0-9-]+">
-			<span *ngIf="fechaNacimiento.touched && !fechaNacimiento.valid">
-				La fecha de nacimiento es incorrecto!!
-			</span>
-		</p>
-
-		<p>
-			<label>Telefono:</label>
-			<input type="text" name="telefono" #telefono="ngModel" [(ngModel)]="usuario.telefono" required pattern="[0-9]+">
-			<span *ngIf="telefono.touched && !telefono.valid">
-				El telefono es incorrecto!!
-			</span>
-		</p>
-
-		<button (click)="volver()" class="btn btn-danger"> Volver</button>
-		<input type="submit" value="Reservar" class="btn btn-success" [disabled]="!formReservarVuelo.form.valid">
-
-	</form>
+<div align="center">
+	<div class="col-md-4">
+		<div class="card mb-4 box-shadow">
+			<div class="card-body">
+				<h5 class="card-title" align="center"><strong>Reservar el vuelo # {{vueloSeleccionado.id}}</strong></h5>
+				<p class="card-text" align="left"><strong>Aerolinea: </strong>{{vueloSeleccionado.aerolinea}}</p>
+				<p class="card-text" align="left"><strong>Ruta: </strong>{{vueloSeleccionado.origen}} - {{vueloSeleccionado.destino}}</p>
+				<p class="card-text" align="left"><strong>Fecha: </strong>{{vueloSeleccionado.fecha}}</p>
+				<p class="card-text" align="right"><strong>Valor: </strong>${{vueloSeleccionado.valor}}</p>
+			</div>
+		</div>
+	</div>
 </div>
+
+<form #formReservarVuelo="ngForm" (ngSubmit)="reservarVuelo()">
+	<div class="form-group">
+		<label for="exampleInputEmail1">Cedula</label>
+		<input type="text" class="form-control" id="cedulaId" aria-describedby="emailHelp" placeholder="Cedula..." name="cedula" #cedula="ngModel" [(ngModel)]="usuario.cedula" required pattern="[0-9]+">
+		<small *ngIf="cedula.touched && !cedula.valid" id="emailHelp" class="form-text text-muted">La cedula es incorrecto!!</small>
+	</div>
+	<div class="form-group">
+		<label for="exampleInputEmail1">Nombre</label>
+		<input type="text" class="form-control" id="nombreId" aria-describedby="emailHelp" placeholder="Nombre..." name="nombre" #nombre="ngModel" [(ngModel)]="usuario.nombre" required>
+		<small *ngIf="nombre.touched && !nombre.valid" id="emailHelp" class="form-text text-muted">El nombre es incorrecto!!</small>
+	</div>
+	<div class="form-group">
+		<label for="exampleInputEmail1">Apellido</label>
+		<input type="text" class="form-control" id="apellidoId" aria-describedby="emailHelp" placeholder="Apellido..." name="apellido" #apellido="ngModel" [(ngModel)]="usuario.apellido" required>
+		<small *ngIf="apellido.touched && !apellido.valid" id="emailHelp" class="form-text text-muted">El apellido es incorrecto!!</small>
+	</div>
+	<div class="form-group">
+		<label for="exampleInputEmail1">Fecha de nacimiento</label>
+		<input type="text" class="form-control" id="fechaNacimientoId" aria-describedby="emailHelp" placeholder="Fecha de nacimiento..." name="fechaNacimiento" #fechaNacimiento="ngModel" [(ngModel)]="usuario.fechaNacimiento" required pattern="[0-9-]+">
+		<small *ngIf="fechaNacimiento.touched && !fechaNacimiento.valid" id="emailHelp" class="form-text text-muted">La fecha de nacimiento es incorrecto!!</small>
+	</div>
+	<div class="form-group">
+		<label for="exampleInputEmail1">Telefono</label>
+		<input type="text" class="form-control" id="telefonoId" aria-describedby="emailHelp" placeholder="Telefono..." name="telefono" #telefono="ngModel" [(ngModel)]="usuario.telefono" required pattern="[0-9]+">
+		<small *ngIf="telefono.touched && !telefono.valid" id="emailHelp" class="form-text text-muted">El telefono es incorrecto!!</small>
+	</div>
+	<button type="submit" class="btn btn-secondary" [disabled]="!formReservarVuelo.form.valid">Reservar</button>
+</form>

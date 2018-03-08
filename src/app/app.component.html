@@ -1,17 +1,21 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    
-  </h1>
-  <hr>
-    <nav>
-        <a class="btn btn-info" [routerLink]="['/home']" > Home</a>
-        <a class="btn btn-info" [routerLink]="['/vuelos']" > Vuelos</a>
-        <a class="btn btn-info" [routerLink]="['/consultar-reservas']" > Consultar Reservas</a>
-    </nav>
-  <hr>
-  <router-outlet></router-outlet>
-</div>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="#">Fixed navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/vuelos']">Vuelos <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/consultar-reservas']">Consultar Reservas <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-
-
+<router-outlet></router-outlet>

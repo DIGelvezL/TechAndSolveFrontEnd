@@ -48,11 +48,8 @@ export class ReservasComponent {
 	guardarReserva(reserva){
 		this._reservasService.reservarVuelo(reserva).subscribe(
 			result => {
-				// this.vuelos = result;
-				console.log(result);
-
 				if(result.respuestaDto && result.respuestaDto.codigo == 0){
-					this.router.navigate(['']); 
+					this.router.navigate(['consultar-reservas']); 
 					alert("Se guardo la reserva correctamente.");     
                 }else{
                 	console.log("Error en el servidor");
