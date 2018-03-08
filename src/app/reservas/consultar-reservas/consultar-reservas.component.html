@@ -10,9 +10,7 @@
 		<p>
 			<label>Cedula:</label>
 			<input type="text" name="cedulaName" #cedulaName="ngModel" [(ngModel)]="cedula" required pattern="[0-9]+">
-			<span *ngIf="cedulaName.touched && !cedulaName.valid">
-				La cedula es incorrecto!!
-			</span>
+			<small *ngIf="cedulaName.touched && !cedulaName.valid" id="emailHelp" class="form-text text-muted">La cedula es incorrecto!!</small>
 		</p>
 
 		<input type="submit" value="Consultar" class="btn btn-secondary" [disabled]="!formConsultarReservaById.form.valid">

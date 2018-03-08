@@ -15,6 +15,7 @@ export class ReservasComponent {
 	public reservas:ReservaDto;
 	public usuario:UsuarioDto;
 	@Input('vueloSeleccionado') vueloSeleccionado:VuelosDto;
+	public reservaList:Array<ReservaDto>;
 
 	constructor(
 		private _reservasService: ReservasService,
@@ -28,7 +29,13 @@ export class ReservasComponent {
 		if(this.validarMayorEdad()){
         	this.reservas = new ReservaDto(null, new Date(), this.usuario, this.vueloSeleccionado);
 
-			this.guardarReserva(this.reservas);
+        	let request = {
+        		cedula: this.reservas.usuario.cedula,
+        		fechaReserva: this.reservas.fechaReserva
+        	};
+
+        	this.validarReservaByDia(request)
+
         }else{
         	alert("Solo los mayores de edad pueden hacer reservas de vuelo!!");
         }
@@ -45,12 +52,29 @@ export class ReservasComponent {
         return years > 18
 	}
 
+	validarReservaByDia(request){
+		this._reservasService.consultarByCedulaFecha(request).subscribe(
+			result => {
+				this.reservaList = result;
+
+				if(this.reservaList && this.reservaList.length == 0){
+				    this.guardarReserva(this.reservas);
+	        	}else{
+	        		alert("No se puede hacer más de una reserva para el mismo día.!!");
+	        	}
+			},
+			error => {
+				console.log(<any>error);
+			}
+		);
+	}
+
 	guardarReserva(reserva){
 		this._reservasService.reservarVuelo(reserva).subscribe(
 			result => {
 				if(result.respuestaDto && result.respuestaDto.codigo == 0){
 					this.router.navigate(['consultar-reservas']); 
-					alert("Se guardo la reserva correctamente.");     
+					alert("Se guardó la reserva correctamente.");     
                 }else{
                 	console.log("Error en el servidor");
                 }
