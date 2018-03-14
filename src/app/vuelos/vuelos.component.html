@@ -4,36 +4,37 @@
 <main role="main" class="container" *ngIf="!esReserva">
 	<div class="album py-5 bg-light">
         <div class="jumbotron">
-			<div class="row">
-            	<div class="col-md-4" *ngFor="let vuelo of vuelos">
-              		<div class="card mb-4 box-shadow">
-                		<div class="card-body">
-                			<h5 class="card-title" align="center"><strong>Vuelo # {{vuelo.id}}</strong></h5>
-                			<p class="card-text" align="left"><strong>{{vuelo.aerolinea}}</strong></p>
-                			<p class="card-text" align="left"><strong>Ruta: </strong>{{vuelo.origen}} - {{vuelo.destino}}</p>
-							<p class="card-text" align="left"><strong>Fecha: </strong>{{vuelo.fecha}}</p>
-							<p class="card-text" align="right"><strong>Valor: </strong>${{vuelo.valor}}</p>
-                  			<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-secondary" (click)="reservarVuelo(vuelo)">Reservar</button>
-                    			</div>
-                  			</div>
-                		</div>
-              		</div>
-            	</div>
-			</div>
+          <div class="row">
+            <div class="col-md-4" *ngFor="let vuelo of vuelos">
+          		<div class="card mb-4 box-shadow">
+            		<div class="card-body">
+            			<h5 class="card-title" align="center"><strong>Vuelo # {{vuelo.id}}</strong></h5>
+            			<p class="card-text" align="left"><strong>{{vuelo.aerolinea}}</strong></p>
+            			<p class="card-text" align="left"><strong>Ruta: </strong>{{vuelo.origen}} - {{vuelo.destino}}</p>
+                  <p class="card-text" align="left"><strong>Fecha: </strong>{{vuelo.fecha}}</p>
+							    <p class="card-text" align="right"><strong>Valor: </strong>${{vuelo.valor}}</p>
+            			<div class="d-flex justify-content-between align-items-center">
+								    <div class="btn-group">
+									    <button type="button" class="btn btn-secondary" (click)="reservarVuelo(vuelo)">Reservar</button>
+              			</div>
+            			</div>
+            		</div>
+        		  </div>
+          	</div>
+			     </div>
 
-			<span *ngIf="!vuelos">Cargando listado...</span>
+			    <span *ngIf="!vuelos">Cargando listado...</span>
         </div>
 	</div>
 </main>
+
 
 <br/>
 <br/>
 
 <main class="container" *ngIf="esReserva">
   <div class="jumbotron">
-		<reservas [vueloSeleccionado]="vuelo"></reservas>
+		<reservas [vueloSeleccionado]="vuelo" (desde_el_hijo)="recibirDatos($event)"></reservas>
 		<div align="right">
 			<button (click)="cancelar()" class="btn btn-danger"> Cancelar</button>
 		</div>

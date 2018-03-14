@@ -49,4 +49,9 @@ export class VuelosComponent {
 		this.vuelo = new VuelosDto();
 		this.esReserva = false;
 	}
+
+	recibirDatos(event){
+		this.esReserva = event.nombre;
+		console.log(event.nombre);
+	}
 }

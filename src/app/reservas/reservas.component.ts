@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 import { ReservaDto } from '../dtos/reservaDto';
@@ -16,6 +16,7 @@ export class ReservasComponent {
 	public usuario:UsuarioDto;
 	@Input('vueloSeleccionado') vueloSeleccionado:VuelosDto;
 	public reservaList:Array<ReservaDto>;
+	@Output() desde_el_hijo = new EventEmitter();
 
 	constructor(
 		private _reservasService: ReservasService,
@@ -85,7 +86,7 @@ export class ReservasComponent {
 		);
 	}
 
-	volver(){
-		
+	volver(event){
+		this.desde_el_hijo.emit({nombre: false});
 	}
 }
